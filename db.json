@@ -21,7 +21,7 @@
     {
       "name": "One Plus Nord 2",
       "description": "telefono di media gamma oneplus",
-      "price": "500 €",
+      "price": 500 ,
       "id": 4
     }
   ],

@@ -1,1 +1,113 @@
-<p>cart works!</p>
+<!-- message for no products in the cart-->
+
+<div *ngIf="arrayCart.length == 0" class="text-center mt-4">
+  <p class="h2">Non hai acquistato nessun prodotto, ritorna allo</p>
+  <button class="btn btn-success fs-4 text-center m-" [routerLink]="['/shop']">
+    Shop 🛍
+  </button>
+</div>
+<!-- Cards for the cart-->
+<div
+  class="container d-flex flex-row justify-content-xl-start justify-content-center flex-wrap"
+>
+  <div
+    class="card m-3"
+    style="width: 18rem; height: 14rem"
+    *ngFor="let prod of arrayCart"
+  >
+
+    <header class="card-header">
+      <h5 class="card-title text-center">{{ prod.name }}</h5>
+    </header>
+    <div class="card-body">
+      <p class="card-text text-center">{{ prod.description }}</p>
+    </div>
+    <div class="card-footer d-flex justify-content-end">{{ prod.price }} €</div>
+  </div>
+</div>
+<!-- total price-->
+<div class="container">
+  <p *ngIf="arrayCart.length > 0" class="fs-4 text-center">
+    Il prezzo totale è {{ totalPrice() }} €
+  </p>
+</div>
+
+<!-- reactive form-->
+<div class="container">
+  <h2 class="text-center">Completa il tuo acquisto</h2>
+  <div class="row">
+    <div class="col">
+      <form  >
+
+         <div class="form-group">
+            <label for="name">Inserisci il tuo nome</label>
+            <input
+              id="name"
+              required
+              formControlName="name"
+              class="form-control"
+              type="text"
+            />
+            <div
+
+              class="alert alert-danger mt-1"
+              role="alert"
+            >
+              Campo obbligatorio
+            </div>
+
+
+            <label for="alterEgo">email</label>
+            <input
+              id="email"
+              required
+              formControlName="email"
+              class="form-control"
+              type="email"
+            />
+            <div
+
+              class="alert alert-danger mt-1"
+              role="alert"
+            >
+              Campo obbligatorio
+            </div>
+
+
+            <label for="name">Inserisci il tuo nome</label>
+            <input
+              id="name"
+              required
+              formControlName="name"
+              class="form-control"
+              type="text"
+            />
+            <div
+
+              class="alert alert-danger mt-1"
+              role="alert"
+            >
+              Campo obbligatorio
+            </div>
+
+
+
+
+
+
+          <div class="row">
+            <div class="col d-grid gap-2">
+              <button
+                type="submit"
+
+                class="btn btn-primary mt-4"
+              >
+                completa il tuo ordine
+              </button>
+            </div>
+          </div>
+         </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -39,7 +39,7 @@ const routes: Route[] = [
     HomeComponent,
     ShopDetailsComponent,
   ],
-  imports: [BrowserModule, HttpClientModule,  RouterModule.forRoot(routes),FormsModule],
+  imports: [BrowserModule, HttpClientModule,  RouterModule.forRoot(routes),FormsModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
