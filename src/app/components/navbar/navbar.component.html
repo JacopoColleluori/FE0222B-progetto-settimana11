@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid ">
+
+    <div class="justify-content-center navbar-collapse " >
+
+      <ul class="navbar-nav fs-4 ">
+        <li class="nav-item ps-3">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            [routerLink]="'/'"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item ps-3">
+          <a class="nav-link" [routerLink]="['/shop']" routerLinkActive="active"
+            >Shop 🛍</a
+          >
+        </li>
+        <li class="nav-item ps-3">
+          <a
+            class="nav-link"
+            [routerLink]="['/cart']"
+            routerLinkActive="active"
+            >Cart 🛒</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

@@ -1,0 +1,20 @@
+<div
+  class="container d-flex flex-row justify-content-xl-start justify-content-center flex-wrap"
+>
+  <div
+    class="card m-3"
+    style="width: 18rem; height: 14rem"
+    *ngFor="let prod of prods"
+  >
+    <header class="card-header">
+      <h5 class="card-title text-center">{{ prod.name }}</h5>
+    </header>
+    <div class="card-body">
+      <p class="card-text text-center">{{ prod.description }}</p>
+    </div>
+    <div class="card-footer d-flex justify-content-evenly align-items-center">
+      <button class="btn btn-primary" [routerLink]="['/product/',prod.id]">ⓘ Info</button><p class="pt-3">{{ prod.price }}€</p>
+      <button class="btn btn-dark">🛒</button>
+    </div>
+  </div>
+</div>
