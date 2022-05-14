@@ -28,4 +28,9 @@ export class CartService {
    this.counter ++;
    this.sub.next(this.counter);
   }
+  resetCart(){
+    this.prodCart=[];
+    this.counter=0;
+    this.sub.next(this.counter);
+  }
 }

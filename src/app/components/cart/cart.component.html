@@ -2,7 +2,7 @@
 
 <div *ngIf="arrayCart.length == 0" class="text-center mt-4">
   <p class="h2">Non hai acquistato nessun prodotto, ritorna allo</p>
-  <button class="btn btn-success fs-4 text-center m-" [routerLink]="['/shop']">
+  <button class="btn btn-success fs-4 text-center mb-5 mt-4" [routerLink]="['/shop']">
     Shop 🛍
   </button>
 </div>
@@ -28,85 +28,89 @@
 <!-- total price-->
 <div class="container">
   <p *ngIf="arrayCart.length > 0" class="fs-4 text-center">
-    Il prezzo totale è {{ totalPrice() }} €
+    Il prezzo totale è {{ this.tot }} €
   </p>
 </div>
 
 <!-- reactive form-->
-<div class="container">
+<div class="container mt-5" >
   <h2 class="text-center">Completa il tuo acquisto</h2>
   <div class="row">
     <div class="col">
-      <form  >
+      <form [formGroup]="form" (ngSubmit)="submit()" >
 
-         <div class="form-group">
-            <label for="name">Inserisci il tuo nome</label>
-            <input
-              id="name"
-              required
-              formControlName="name"
-              class="form-control"
-              type="text"
-            />
+<div class="form-group">
+
+              <label for="name">Inserisci il tuo nome</label>
+              <input
+                id="name"
+                required
+                formControlName="name"
+                class="form-control"
+                type="text"
+              />
+
             <div
-
-              class="alert alert-danger mt-1"
+            *ngIf="getFormControl('name').invalid &&
+            getFormControl('name').touched"
+              class="alert alert-danger mt-1 text-center"
               role="alert"
             >
-              Campo obbligatorio
+              Campo obbligatorio, Nome necessario
             </div>
+          </div>
 
+           <div class="form-group">
+              <label for="alterEgo">email</label>
+              <input
+                id="email"
+                required
+                formControlName="email"
+                class="form-control"
+                type="email"
+              />
 
-            <label for="alterEgo">email</label>
-            <input
-              id="email"
-              required
-              formControlName="email"
-              class="form-control"
-              type="email"
-            />
             <div
-
-              class="alert alert-danger mt-1"
+            *ngIf="getFormControl('email').invalid &&
+            getFormControl('email').touched"
+              class="alert alert-danger mt-1 text-center"
               role="alert"
             >
-              Campo obbligatorio
+              Campo obbligatorio, email necessaria
             </div>
+          </div>
 
+            <div class="form-group">
+              <label for="name">Inserisci il tuo indirizzo</label>
+              <input
+                id="address"
+                required
+                formControlName="address"
+                class="form-control"
+                type="text"
+              />
 
-            <label for="name">Inserisci il tuo nome</label>
-            <input
-              id="name"
-              required
-              formControlName="name"
-              class="form-control"
-              type="text"
-            />
             <div
-
-              class="alert alert-danger mt-1"
+            *ngIf="getFormControl('address').invalid &&
+            getFormControl('address').touched"
+              class="alert alert-danger mt-1 text-center"
               role="alert"
             >
-              Campo obbligatorio
+              Campo obbligatorio, Indirizzo necessario per la consegna
             </div>
-
-
-
-
-
-
+          </div>
           <div class="row">
             <div class="col d-grid gap-2">
               <button
                 type="submit"
-
+                [disabled]="form.invalid  || this.arrayCart.length==0"
                 class="btn btn-primary mt-4"
               >
                 completa il tuo ordine
               </button>
             </div>
           </div>
-         </div>
+
       </form>
     </div>
   </div>
