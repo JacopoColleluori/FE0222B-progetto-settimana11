@@ -12,20 +12,26 @@ import { CartService } from 'src/app/services/cart.service';
 export class ShopComponent implements OnInit {
   sub!: Subscription;
 
+  loading:boolean=false;
+
   prods!: Products[];
 
   constructor(private prdtSrv: ProductService, private cartSrv: CartService) {}
 
   addToCart(obj: Products) {
-                          //method for adding the object into the array in the service
+
+    //method for adding the object into the array in the service
     console.log(obj);     //control if the object is passed
     this.cartSrv.addToSrvArray(obj);
+
   }
 
   ngOnInit(): void {
+    this.loading=true;
     this.sub = this.prdtSrv.get().subscribe((arrayProd) => {
       this.prods = arrayProd;
       console.log(this.prods); //control of the local array
+      this.loading=false;      //deletion of the loading phrase
     });
   }
   addNumber() {
