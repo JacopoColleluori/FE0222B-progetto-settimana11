@@ -18,8 +18,7 @@ export class CartComponent implements OnInit {
   constructor(private crtService: CartService, private formb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.tot=0;
-    this.tot=this.totalPrice()
+
 
     this.arrayCart = this.crtService.getArrayCart();
 
@@ -28,8 +27,8 @@ export class CartComponent implements OnInit {
       email: [],
       address: [],
     });
-
-
+    this.tot = 0;
+    this.tot = this.totalPrice();
   }
   totalPrice() {
     //method for the total price in the template
@@ -40,14 +39,14 @@ export class CartComponent implements OnInit {
     return this.tot;
   }
 
-  getFormControl(nameEl:string){
+  getFormControl(nameEl: string) {
     return this.form.get(nameEl) as AbstractControl;
   }
   submit() {
     console.log(this.form.value);
     this.form.reset();
     this.crtService.resetCart();
-    this.arrayCart=[];
-    this.tot=0;
+    this.arrayCart = [];
+    this.tot = 0;
   }
 }
