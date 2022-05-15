@@ -44,6 +44,8 @@ export class CartComponent implements OnInit {
   }
   submit() {
     console.log(this.form.value);
+    console.log("Ordine Completato!!!");
+    alert("Complimenti. Ordine completato");
     this.form.reset();
     this.crtService.resetCart();
     this.arrayCart = [];
