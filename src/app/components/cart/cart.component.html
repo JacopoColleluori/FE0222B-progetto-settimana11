@@ -6,48 +6,39 @@
     Shop 🛍
   </button>
 </div>
-<!-- Cards for the cart-->
-<div
-  class="container d-flex flex-row justify-content-xl-start justify-content-center flex-wrap"
->
-  <div
-    class="card m-3"
-    style="width: 18rem; height: 14rem"
-    *ngFor="let prod of arrayCart"
-  >
+<!--Cart List-->
+<div class="container" *ngIf="arrayCart.length>0">
+  <ul class="list-group fs-3">
+    <li class="list-group-item text-center">  Prodotto  <span class="ps-4">Prezzo</span>     </li>
+    <li class="list-group-item text-center" *ngFor="let prod of arrayCart"><div class="text-center ">{{prod.name}}     <span class="ps-4">{{prod.price}}€</span></div>
+    </li>
 
-    <header class="card-header">
-      <h5 class="card-title text-center">{{ prod.name }}</h5>
-    </header>
-    <div class="card-body">
-      <p class="card-text text-center">{{ prod.description }}</p>
-    </div>
-    <div class="card-footer d-flex justify-content-end">{{ prod.price }} €</div>
-  </div>
+  </ul>
 </div>
 <!-- total price-->
 <div class="container">
-  <p *ngIf="arrayCart.length > 0" class="fs-4 text-center">
+  <p *ngIf="arrayCart.length > 0" class="fs-4 text-center fw-bold mt-5">
     Il prezzo totale è {{ this.tot }} €
   </p>
 </div>
 
 <!-- reactive form-->
 <div class="container mt-5" >
-  <h2 class="text-center">Completa il tuo acquisto</h2>
+  <h2 class="text-center mb-4">Completa il tuo acquisto</h2>
   <div class="row">
-    <div class="col">
+  <div class="col text-center">
       <form [formGroup]="form" (ngSubmit)="submit()" >
 
-<div class="form-group">
+<div class="form-group ">
 
-              <label for="name">Inserisci il tuo nome</label>
+              <label for="name" class="fs-4 mb-3 mt-3">Inserisci il tuo nome</label>
               <input
                 id="name"
                 required
                 formControlName="name"
-                class="form-control"
+                class="form-control fs-4"
                 type="text"
+                placeholder="inserisci qui il tuo nome"
               />
 
             <div
@@ -61,13 +52,14 @@
           </div>
 
            <div class="form-group">
-              <label for="alterEgo">email</label>
+              <label for="alterEgo" class="fs-4 mb-3 mt-3">email</label>
               <input
                 id="email"
                 required
                 formControlName="email"
-                class="form-control"
+                class="form-control fs-4"
                 type="email"
+                placeholder="inserisci qui la tua email"
               />
 
             <div
@@ -81,13 +73,14 @@
           </div>
 
             <div class="form-group">
-              <label for="name">Inserisci il tuo indirizzo</label>
+              <label for="name" class="fs-4 mb-3 mt-3">Inserisci il tuo indirizzo</label>
               <input
                 id="address"
                 required
                 formControlName="address"
-                class="form-control"
+                class="form-control fs-4"
                 type="text"
+                placeholder="inserisci qui il tuo indirizzo"
               />
 
             <div
@@ -99,12 +92,13 @@
               Campo obbligatorio, Indirizzo necessario per la consegna
             </div>
           </div>
-          <div class="row">
-            <div class="col d-grid gap-2">
+          <div class="row ">
+            <div class="col d-grid ">
+              <p class="text-center bg-danger mt-4 fs-5" *ngIf="arrayCart.length==0">Non puoi completare l'ordine se non ci sono prodotti nel carrello</p>
               <button
                 type="submit"
                 [disabled]="form.invalid  || this.arrayCart.length==0"
-                class="btn btn-primary mt-4"
+                class="btn btn-primary fs-4 mt-3"
               >
                 completa il tuo ordine
               </button>
